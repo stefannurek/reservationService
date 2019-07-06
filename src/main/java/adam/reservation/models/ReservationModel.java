@@ -1,5 +1,6 @@
 package adam.reservation.models;
 
+import adam.reservation.models.form.ReservationForm;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,4 +20,11 @@ public class ReservationModel {
     private String lastname;
     private Date date;
     private String adres;
+
+    public ReservationModel(ReservationForm form) {
+        name = form.getName();
+        lastname = form.getLastname();
+        date = form.getFormatedDate();
+        adres = form.getAdres();
+    }
 }

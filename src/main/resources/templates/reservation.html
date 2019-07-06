@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+    <div style="width: 100%; height: 100%">
+        <h1>
+            <form th:action="@{/}" method="post" th:object="${reservationForm}">
+                <input style="width: 15%" placeholder="Imie" type="text" th:field="*{name}">
+                <input style="width: 15%" placeholder="Nazwisko" type="text" th:field="*{lastname}">
+                <br/>
+                <input style="width: 15%" placeholder="Adres" type="text" th:field="*{adres}">
+                <br/>
+                <input style="width: 15%" placeholder="Data" type="text" th:field="*{date}">
+                <br/>
+                <input style="width: 8%" type="submit" value="Zarezerwuj">
+            </form>
+        </h1>
+    </div>
+</center>
+</body>
+</html>
