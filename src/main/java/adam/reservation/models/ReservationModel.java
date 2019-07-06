@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -18,7 +18,7 @@ public class ReservationModel {
     private int id;
     private String name;
     private String lastname;
-    private Date date;
+    private LocalDate date;
     private String adres;
 
     public ReservationModel(ReservationForm form) {
