@@ -6,8 +6,9 @@
 </head>
 <body>
 <center>
+    <h1 th:text="${error}"></h1>
+    <br/>
     <div style="width: 100%; height: 100%">
-        <h1>
             <form th:action="@{/}" method="post" th:object="${reservationForm}">
                 <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="font-size: small"></p>
                 <input style="width: 15%" placeholder="Imie" type="text" th:field="*{name}">
@@ -23,7 +24,24 @@
                 <br/>
                 <input style="width: 8%" type="submit" value="Zarezerwuj">
             </form>
-        </h1>
+        <br/>
+        <br/>
+        <table>
+            <tr>
+                <th>Imie</th>
+                <th>Nazwisko</th>
+                <th>Adres</th>
+                <th>Data</th>
+            </tr>
+        <th:block th:each="reservation : ${reservations}">
+            <tr>
+                <th th:text="${reservation.name}"></th>
+                <th th:text="${reservation.lastname}"></th>
+                <th th:text="${reservation.adres}"></th>
+                <th th:text="${reservation.date}"></th>
+            </tr>
+        </th:block>
+        </table>
     </div>
 </center>
 </body>

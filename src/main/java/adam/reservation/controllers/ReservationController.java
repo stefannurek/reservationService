@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+
 
 @Controller
 public class ReservationController {
@@ -22,6 +24,8 @@ public class ReservationController {
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("reservationForm", new ReservationForm());
+        model.addAttribute("reservations", reservationRepository.findByDateBetween(LocalDate.now(),
+                LocalDate.now().plusWeeks(1)));
         return "reservation";
     }
 
@@ -31,9 +35,11 @@ public class ReservationController {
 
         if(result.hasErrors()){
             return "reservation";
+        }else if (reservationRepository.existsByDateEquals(form.getFormatedDate())){
+            model.addAttribute("error", "Ten dzien jest juz zajety");
+            return "reservation";
         }
         reservationRepository.save(new ReservationModel(form));
         return "reservation";
     }
-
 }

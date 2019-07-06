@@ -27,7 +27,7 @@ public class ReservationForm {
     @Getter
     @Setter
     @NotBlank(message = "{NotBlank.ReservationForm.date}")
-    @Pattern(regexp = "2[0-9]{3}-[0-1][0-9]-[0-3][0-9]", message = "{Pattern.ReservationForm.date}")
+    @Pattern(regexp = "2[0-9]{3}-[0-9][0-9]-[0-9][0-9]", message = "{Pattern.ReservationForm.date}")
     private String date;
     @Getter
     @Setter
