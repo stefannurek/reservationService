@@ -42,4 +42,17 @@ public class ReservationController {
         reservationRepository.save(new ReservationModel(form));
         return "reservation";
     }
+
+    @GetMapping("/showtable")
+    public String showReservation(Model model){
+        model.addAttribute("reservations", reservationRepository.findByDateBetween(LocalDate.now(),
+                LocalDate.now().plusWeeks(1)));
+        return "reservationtable";
+    }
+
+    @GetMapping("/showtableall")
+    public String showReservation2(Model model){
+        model.addAttribute("reservations2", reservationRepository.findAll());
+        return "reservationtable2";
+    }
 }

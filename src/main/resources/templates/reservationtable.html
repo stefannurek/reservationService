@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            background-color: whitesmoke;
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 50%;
+        }
+        tr, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <table>
+        <caption>Rezerwacje na najbliższy tydzień</caption>
+        <tr>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+            <th>Adres</th>
+            <th>Data</th>
+        </tr>
+        <th:block th:each="reservation : ${reservations}">
+            <tr>
+                <th th:text="${reservation.name}"></th>
+                <th th:text="${reservation.lastname}"></th>
+                <th th:text="${reservation.adres}"></th>
+                <th th:text="${reservation.date}"></th>
+            </tr>
+        </th:block>
+    </table>
+</center>
+</body>
+</html>

@@ -24,24 +24,8 @@
                 <br/>
                 <input style="width: 8%" type="submit" value="Zarezerwuj">
             </form>
-        <br/>
-        <br/>
-        <table>
-            <tr>
-                <th>Imie</th>
-                <th>Nazwisko</th>
-                <th>Adres</th>
-                <th>Data</th>
-            </tr>
-        <th:block th:each="reservation : ${reservations}">
-            <tr>
-                <th th:text="${reservation.name}"></th>
-                <th th:text="${reservation.lastname}"></th>
-                <th th:text="${reservation.adres}"></th>
-                <th th:text="${reservation.date}"></th>
-            </tr>
-        </th:block>
-        </table>
+    </br>
+        <a href="http://localhost:8082/showtable">Rezerwacje 7 dni</a> | <a href="http://localhost:8082/showtableall">Rezerwacje wszystkie</a>
     </div>
 </center>
 </body>
