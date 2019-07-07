@@ -7,25 +7,28 @@
 <body>
 <center>
     <h1 th:text="${error}"></h1>
+    </br>
+    <caption><b>Zarezerwuj wizytę</b></caption>
     <br/>
     <div style="width: 100%; height: 100%">
-            <form th:action="@{/}" method="post" th:object="${reservationForm}">
-                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="font-size: small"></p>
-                <input style="width: 15%" placeholder="Imie" type="text" th:field="*{name}">
-                <br/>
-                <p th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" style="font-size: small"></p>
-                <input style="width: 15%" placeholder="Nazwisko" type="text" th:field="*{lastname}">
-                <br/>
-                <p th:if="${#fields.hasErrors('adres')}" th:errors="*{adres}" style="font-size: small"></p>
-                <input style="width: 15%" placeholder="Adres" type="text" th:field="*{adres}">
-                <br/>
-                <p th:if="${#fields.hasErrors('date')}" th:errors="*{date}" style="font-size: small"></p>
-                <input style="width: 15%" placeholder="Data" type="text" th:field="*{date}">
-                <br/>
-                <input style="width: 8%" type="submit" value="Zarezerwuj">
-            </form>
-    </br>
-        <a href="http://localhost:8082/showtable">Rezerwacje 7 dni</a> | <a href="http://localhost:8082/showtableall">Rezerwacje wszystkie</a>
+        <form th:action="@{/}" method="post" th:object="${reservationForm}">
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="font-size: small"></p>
+            <input style="width: 15%" placeholder="Imie" type="text" th:field="*{name}">
+            <br/>
+            <p th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" style="font-size: small"></p>
+            <input style="width: 15%" placeholder="Nazwisko" type="text" th:field="*{lastname}">
+            <br/>
+            <p th:if="${#fields.hasErrors('adres')}" th:errors="*{adres}" style="font-size: small"></p>
+            <input style="width: 15%" placeholder="Adres" type="text" th:field="*{adres}">
+            <br/>
+            <p th:if="${#fields.hasErrors('date')}" th:errors="*{date}" style="font-size: small"></p>
+            <input style="width: 15%" placeholder="Data" type="text" th:field="*{date}">
+            <br/>
+            <input style="width: 8%" type="submit" value="Zarezerwuj">
+        </form>
+        </br>
+        <a href="http://localhost:8082/showtable">Rezerwacje 7 dni</a> | <a href="http://localhost:8082/showtableall">Rezerwacje
+        wszystkie</a>
     </div>
 </center>
 </body>
