@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
@@ -17,22 +17,22 @@ public class ReservationForm {
     @Getter
     @Setter
     @Size(min = 3, max = 20, message = "{Size.ReservationForm.name}")
-    @NotBlank(message = "{NotBlank.ReservationForm.name}")
+    @NotNull(message = "{NotNull.ReservationForm.name}")
     private String name;
     @Getter
     @Setter
     @Size(min = 3, max = 20, message = "{Size.ReservationForm.lastname}")
-    @NotBlank(message = "{NotBlank.ReservationForm.lastname}")
+    @NotNull(message = "{NotNull.ReservationForm.lastname}")
     private String lastname;
     @Getter
     @Setter
-    @NotBlank(message = "{NotBlank.ReservationForm.date}")
+    @NotNull(message = "{NotNull.ReservationForm.date}")
     @Pattern(regexp = "2[0-9]{3}-[0-9][0-9]-[0-9][0-9]", message = "{Pattern.ReservationForm.date}")
     private String date;
     @Getter
     @Setter
     @Size(min = 5, max = 50, message = "{Size.ReservationForm.adres}")
-    @NotBlank(message = "{NotBlank.ReservationForm.adres}")
+    @NotNull(message = "{NotNull.ReservationForm.adres}")
     private String adres;
 
     DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");

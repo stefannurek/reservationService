@@ -1,7 +1,6 @@
 package adam.reservation.models;
 
 import adam.reservation.models.form.ReservationForm;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

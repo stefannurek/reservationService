@@ -18,8 +18,11 @@ import java.time.LocalDate;
 @Controller
 public class ReservationController {
 
-    @Autowired
     ReservationRepository reservationRepository;
+
+    public ReservationController(ReservationRepository reservationRepository){
+        this.reservationRepository=reservationRepository;
+    }
 
     @GetMapping("/")
     public String index(Model model) {

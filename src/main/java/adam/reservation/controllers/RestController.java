@@ -2,14 +2,10 @@ package adam.reservation.controllers;
 
 import adam.reservation.models.ReservationModel;
 import adam.reservation.repositories.ReservationRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -17,12 +13,20 @@ import java.time.format.DateTimeFormatter;
 @Controller
 public class RestController {
 
-    @Autowired
+
     ReservationRepository reservationRepository;
+
+    public RestController(ReservationRepository reservationRepository){
+        this.reservationRepository=reservationRepository;
+    }
 
     @RequestMapping(value = "/rest/reservation", method = RequestMethod.GET,
             produces = "application/json")
-    public ResponseEntity reservation() {
+    public ResponseEntity reservationIndex(@RequestHeader("Password-App") String password) {
+
+        if(!password.equalsIgnoreCase("password")){
+            return new ResponseEntity("Bad userid", HttpStatus.BAD_REQUEST);
+        }
         return new ResponseEntity(reservationRepository.findAll(), HttpStatus.OK);
     }
 
@@ -52,9 +56,21 @@ public class RestController {
                                                 @PathVariable("date") String date) {
         ReservationModel model = reservationRepository.findById(id);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate newDate = LocalDate.from(formatter.parse(date));
+
+        if(reservationRepository.existsByDateEquals(newDate)){
+            return new ResponseEntity("This date is busy", HttpStatus.CONFLICT);
+        }
 
         model.setDate(LocalDate.from(formatter.parse(date)));
         reservationRepository.save(model);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/rest/reservation", method = RequestMethod.PUT,
+            produces = "application/json")
+    public ResponseEntity responseAct(@RequestBody ReservationModel reservationModel){
+        reservationRepository.save(reservationModel);
         return new ResponseEntity(HttpStatus.OK);
     }
 }
