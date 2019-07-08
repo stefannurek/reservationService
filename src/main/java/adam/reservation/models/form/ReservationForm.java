@@ -16,7 +16,7 @@ public class ReservationForm {
 
     @Getter
     @Setter
-    @Size(min = 3, max = 20 , message = "{Size.ReservationForm.name}")
+    @Size(min = 3, max = 20, message = "{Size.ReservationForm.name}")
     @NotBlank(message = "{NotBlank.ReservationForm.name}")
     private String name;
     @Getter
@@ -38,6 +38,6 @@ public class ReservationForm {
     DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     public LocalDate getFormatedDate() {
-            return LocalDate.parse(date, format);
+        return LocalDate.parse(date, format);
     }
 }
