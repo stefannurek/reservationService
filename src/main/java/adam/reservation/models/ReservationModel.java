@@ -3,7 +3,6 @@ package adam.reservation.models;
 import adam.reservation.models.form.ReservationForm;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
