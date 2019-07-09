@@ -3,7 +3,6 @@ package adam.reservation.controllers;
 import adam.reservation.models.ReservationModel;
 import adam.reservation.models.form.ReservationForm;
 import adam.reservation.repositories.ReservationRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,11 +26,8 @@ public class ReservationController {
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("reservationForm", new ReservationForm());
-        model.addAttribute("reservations", reservationRepository.findByDateBetween(LocalDate.now(),
-                LocalDate.now().plusWeeks(1)));
         return "reservation";
     }
-
 
     @PostMapping("/")
     public String index(@ModelAttribute("reservationForm") @Valid ReservationForm form, BindingResult result, Model model) {
